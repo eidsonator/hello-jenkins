@@ -10,4 +10,9 @@ class HelloTest {
     void main() {
         assertTrue(true);
     }
+    
+    @Test
+    void test() {
+        assertTrue(false);
+    }
 }
