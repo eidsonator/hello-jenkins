@@ -1,10 +1,10 @@
 node() {
-//     stage('Source') {
-//         git (
-//             url: 'git@github.com:eidsonator/hello-jenkins.git',
-//             credentialsId: 'gitt'
-//             )
-//     }
+    stage('Source') {
+        git (
+            url: 'git@github.com:eidsonator/hello-jenkins.git',
+            credentialsId: 'gitt'
+            )
+    }
     stage('Build') {
         sh './gradlew build'
     }
