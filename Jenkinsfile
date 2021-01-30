@@ -5,15 +5,28 @@ node() {
             credentialsId: 'gitt'
             )
     }
-    stage('Build') {
-        sh '''
-        ./gradlew sonarqube -Dsonar.projectKey=hello-jenkins \
-                                          -Dsonar.host.url=http://127.0.0.1:9000 \
-                                          -Dsonar.login=71fd8393cd3d65329df888711ef4029aa60e9c06
+    stage("build & SonarQube analysis") {
+          node {
+              withSonarQubeEnv('My SonarQube Server') {
+                 sh '''
+                 ./gradlew build
+                 ./gradlew sonarqube -Dsonar.projectKey=hello-jenkins \
+                                                   -Dsonar.host.url=http://127.0.0.1:9000 \
+                                                   -Dsonar.login=71fd8393cd3d65329df888711ef4029aa60e9c06
 
-        '''
-        sh './gradlew build'
-    }
+                 '''
+              }
+          }
+      }
+
+      stage("Quality Gate"){
+          timeout(time: 1, unit: 'HOURS') {
+              def qg = waitForQualityGate()
+              if (qg.status != 'OK') {
+                  error "Pipeline aborted due to quality gate failure: ${qg.status}"
+              }
+          }
+      }
     stage('Test') {
         sh './gradlew clean test --info'
     }
