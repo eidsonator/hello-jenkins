@@ -8,13 +8,8 @@ node() {
     stage("build & SonarQube analysis") {
           node {
               withSonarQubeEnv('local') {
-                 sh '''
-                 ./gradlew build
-                 ./gradlew sonarqube -Dsonar.projectKey=hello-jenkins \
-                                                   -Dsonar.host.url=http://10.254.254.254:9000 \
-                                                   -Dsonar.login=71fd8393cd3d65329df888711ef4029aa60e9c06
-
-                 '''
+                 sh './gradlew build'
+                 sh './gradlew sonarqube -Dsonar.projectKey=hello-jenkins'
               }
           }
       }
