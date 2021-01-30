@@ -7,7 +7,7 @@ node() {
     }
     stage("build & SonarQube analysis") {
           node {
-              withSonarQubeEnv('My SonarQube Server') {
+              withSonarQubeEnv('local') {
                  sh '''
                  ./gradlew build
                  ./gradlew sonarqube -Dsonar.projectKey=hello-jenkins \
