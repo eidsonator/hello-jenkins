@@ -38,8 +38,7 @@ class HelloTest {
     @Test
     void test_what() {
         Hello hello = new Hello();
-        hello.what();
-        assertEquals(4,  hello.what());
+        assertEquals(4,  hello.what(2));
     }
 
 }

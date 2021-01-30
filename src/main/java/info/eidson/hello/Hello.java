@@ -5,7 +5,7 @@ public class Hello {
         System.out.println("Hello Jenkins");
     }
 
-    public int what() {
-        return 4;
+    public int what(int a) {
+        return a * 2;
     }
 }
