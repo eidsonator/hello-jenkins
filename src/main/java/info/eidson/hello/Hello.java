@@ -5,7 +5,7 @@ public class Hello {
         System.out.println("Hello Jenkins");
     }
 
-    public void what() {
-        System.out.println("Tautology");
+    public int what() {
+        return 4;
     }
 }

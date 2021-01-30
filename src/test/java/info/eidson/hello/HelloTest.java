@@ -30,16 +30,16 @@ class HelloTest {
     }
 
     @Test
-    public void out() {
+    void out() {
         Hello.main(null);
         assertEquals("Hello Jenkins\n", outContent.toString());
     }
 
     @Test
-    public void test_what() {
+    void test_what() {
         Hello hello = new Hello();
         hello.what();
-        assertEquals("Tautology\n", outContent.toString());
+        assertEquals(4,  hello.what());
     }
 
 }
