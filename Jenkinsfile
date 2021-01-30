@@ -17,18 +17,19 @@ pipeline {
                 }
             }
         }
-        stage("Quality Gate"){
+        stage("Quality Gate") {
             steps {
                 timeout(time: 1, unit: 'HOURS') {
-                    def qg = waitForQualityGate()
-                    if (qg.status != 'OK') {
-                        error "Pipeline aborted due to quality gate failure: ${qg.status}"
-                    }
+                // Parameter indicates whether to set pipeline to UNSTABLE if Quality Gate fails
+                // true = set pipeline to UNSTABLE, false = don't
+                waitForQualityGate abortPipeline: true
                 }
             }
         }
         stage('Test') {
-            sh './gradlew clean test --info'
+            steps {
+                sh './gradlew clean test --info'
+            }
         }
     }
     post {
