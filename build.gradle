@@ -17,12 +17,15 @@ dependencies {
     compile 'org.codehaus.groovy:groovy-all:2.3.11'
     implementation "org.jetbrains.kotlin:kotlin-stdlib"
     testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile group: 'ch.qos.logback', name: 'logback-classic', version: '0.9.26'
+    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.30'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
 }
 
 test {
     useJUnitPlatform()
+    ignoreFailures = true
     finalizedBy jacocoTestReport // report is always generated after tests run
 }
 
@@ -38,4 +41,12 @@ jacocoTestReport {
 
 jacoco {
     toolVersion = "0.8.6"
+}
+
+task runWithExec(type: Exec) {
+    dependsOn build
+    group = "Execution"
+    description = "Run the main class with ExecTask"
+    commandLine "java", "-classpath", sourceSets.main.runtimeClasspath.getAsPath(), "info.eidson.hello.Hello"
+
 }

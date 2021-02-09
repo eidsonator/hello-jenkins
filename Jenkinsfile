@@ -34,9 +34,15 @@ pipeline {
     }
     post {
         always {
-            mail to: 'todd@eidson.info',
-                 subject: "Pipeline complete: ${currentBuild.fullDisplayName}",
-                 body: "Something is wrong with ${env.BUILD_URL}"
+            junit(
+                    allowEmptyResults: true,
+                    testResults: '**/test-reports/*.xml'
+                 )
+            mail(
+                    to: 'todd@eidson.info',
+                    subject: "Pipeline complete: ${currentBuild.fullDisplayName}",
+                    body: "Something is wrong with ${env.BUILD_URL}"
+                )
         }
     }
 }
