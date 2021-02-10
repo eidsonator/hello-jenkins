@@ -36,7 +36,7 @@ pipeline {
         always {
             junit(
                     allowEmptyResults: true,
-                    testResults: 'build/test-reports/test/*.xml'
+                    testResults: 'build/test-results/test/*.xml'
                  )
 //             mail(
 //                     to: 'todd@eidson.info',
