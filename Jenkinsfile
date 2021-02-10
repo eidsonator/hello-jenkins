@@ -38,11 +38,11 @@ pipeline {
                     allowEmptyResults: true,
                     testResults: '**/test-reports/*.xml'
                  )
-            mail(
-                    to: 'todd@eidson.info',
-                    subject: "Pipeline complete: ${currentBuild.fullDisplayName}",
-                    body: "Something is wrong with ${env.BUILD_URL}"
-                )
+//             mail(
+//                     to: 'todd@eidson.info',
+//                     subject: "Pipeline complete: ${currentBuild.fullDisplayName}",
+//                     body: "Something is wrong with ${env.BUILD_URL}"
+//                 )
         }
     }
 }

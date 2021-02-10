@@ -11,7 +11,6 @@ public class Hello {
     public static void main(String[] args) {
         logger.info("Hello Jenkins");
         logger.info("Hello Jenkinsins");
-//        System.out.println("Hello Jenkinskins");
     }
 
     public int what(int a) {

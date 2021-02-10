@@ -32,7 +32,7 @@ class HelloTest {
     @Test
     void out() {
         Hello.main(null);
-        assertEquals("Hello Jenkins\n", outContent.toString());
+        assertTrue(outContent.toString().contains("info.eidson.hello.Hello - Hello Jenkins"));
     }
 
     @Test
