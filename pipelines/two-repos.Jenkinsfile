@@ -22,7 +22,7 @@ pipeline {
         stage('Test') {
             steps {
                 sh 'cd hello-jenkins'
-                sh './gradlew test --info'
+                sh './gradlew clean test --info'
             }
         }
     }
