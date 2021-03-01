@@ -3,14 +3,25 @@ pipeline {
     stages {
         stage('Source') {
             steps {
-                git (
-                    url: 'git@github.com:eidsonator/hello-jenkins.git',
-                    credentialsId: 'git-ssh'
-                    )
+                dir("hello-jenkins") {
+                    git (
+                        url: 'git@github.com:eidsonator/hello-jenkins.git',
+                        credentialsId: 'git-ssh'
+                        )
+                    sh 'ls -l'
+                }
+                dir("bashh") {
+                   git (
+                       url: 'git@github.com:eidsonator/hello-jenkins.git',
+                       credentialsId: 'git-ssh'
+                       )
+                   sh 'ls -l'
+                }
             }
         }
         stage('Test') {
             steps {
+                sh 'pwd'
                 sh './gradlew test --info'
             }
         }
