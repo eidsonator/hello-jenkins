@@ -21,7 +21,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh 'pwd'
+                sh 'cd hello-jenkins'
                 sh './gradlew test --info'
             }
         }
