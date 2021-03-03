@@ -10,9 +10,9 @@ pipeline {
                         )
                     sh 'ls -l'
                 }
-                dir("bashh") {
+                dir("squashDemo") {
                    git (
-                       url: 'git@github.com:eidsonator/hello-jenkins.git',
+                       url: 'git@github.com:eidsonator/SquashDemo.git',
                        credentialsId: 'git-ssh'
                        )
                    sh 'ls -l'
