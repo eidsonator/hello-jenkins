@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    parameters {
+        string(defaultValue: "123", description: 'This is a parameter', name: 'PARAMETER01')
+    }
     stages {
         stage('Source') {
             steps {
@@ -21,8 +24,8 @@ pipeline {
         }
         stage('Test') {
             steps {
-                def job = build job: 'hello-jenkins',
-                    parameters: [[$class: 'StringParameterValue', name: 'who', value: 'DZone Readers']]
+                build job: 'hello-jenkins',
+                   parameters: [string(name: 'HELLO', value: String.valueOf(PARAMETER01))]
             }
         }
     }
