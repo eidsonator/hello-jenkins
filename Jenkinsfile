@@ -5,7 +5,7 @@ pipeline {
             steps {
                 git (
                     url: 'git@github.com:eidsonator/hello-jenkins.git',
-                    credentialsId: 'gitt'
+                    credentialsId: 'git-ssh'
                     )
             }
         }

@@ -21,8 +21,8 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh 'cd hello-jenkins'
-                sh './gradlew clean test --info'
+                def job = build job: 'hello-jenkins',
+                    parameters: [[$class: 'StringParameterValue', name: 'who', value: 'DZone Readers']]
             }
         }
     }
