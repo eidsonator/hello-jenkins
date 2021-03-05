@@ -25,7 +25,8 @@ pipeline {
         stage('Test') {
             steps {
                 build job: 'hello-jenkins',
-                   parameters: [string(name: 'HELLO', value: String.valueOf(PARAMETER01))]
+                    wait: true
+                    parameters: [string(name: 'HELLO', value: String.valueOf(PARAMETER01))]
             }
         }
     }
